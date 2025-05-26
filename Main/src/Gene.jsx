@@ -1,30 +1,30 @@
-import React, { useState , useRef } from 'react';
+import React, { useState, useRef } from "react";
 
 const PasswordGenerator = () => {
   const [length, setLength] = useState(12);
   const [includeNumbers, setIncludeNumbers] = useState(true);
   const [includeSpecial, setIncludeSpecial] = useState(true);
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const [copied, setCopied] = useState(false);
 
-  const passwordRef = useRef("")
+  const passwordRef = useRef("");
 
   const generatePassword = () => {
-    const lowerChars = 'abcdefghijklmnopqrstuvwxyz';
-    const upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const numberChars = '0123456789';
-    const specialChars = '!@#$%^&*()-_=+[]{}|;:,.<>?';
+    const lowerChars = "abcdefghijklmnopqrstuvwxyz";
+    const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const numberChars = "0123456789";
+    const specialChars = "!@#$%^&*()-_=+[]{}|;:,.<>?";
 
     let charPool = lowerChars + upperChars;
     if (includeNumbers) charPool += numberChars;
     if (includeSpecial) charPool += specialChars;
 
     if (!charPool.length) {
-      setPassword('');
+      setPassword("");
       return;
     }
 
-    let generated = '';
+    let generated = "";
     for (let i = 0; i < length; i++) {
       const randIndex = Math.floor(Math.random() * charPool.length);
       generated += charPool[randIndex];
@@ -75,7 +75,9 @@ const PasswordGenerator = () => {
           onChange={() => setIncludeSpecial(!includeSpecial)}
           className="accent-blue-600"
         />
-        <label className="text-sm text-white-700">Include Special Characters</label>
+        <label className="text-sm text-white-700">
+          Include Special Characters
+        </label>
       </div>
 
       <button
@@ -98,7 +100,7 @@ const PasswordGenerator = () => {
             onClick={copyToClipboard}
             className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
           >
-            {copied ? 'Copied!' : 'Copy Password'}
+            {copied ? "Copied!" : "Copy Password"}
           </button>
         </div>
       )}
