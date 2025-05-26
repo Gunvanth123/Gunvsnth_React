@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Methods Demo</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+    .highlight {
+      color: red !important;
+      font-size: 36px;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="main-heading">DOM Methods</h1>
+  <p class="demo">Paragraph 1</p>
+  <p class="demo">Paragraph 2</p>
+  <div id="container"></div>
+  
+  <button id="add">Add Element</button>
+  <button id="remove">Remove Element</button>
+  <button id="change-style">Change Style</button>
+  <button id="query">Use Query Selector</button>
+
+  <div id="hoverBox">Hover over me!</div>
+
+<script>
+  const box = document.getElementById("hoverBox");
+  box.addEventListener("mouseover", () => {
+    box.style.backgroundColor = "lightblue";
+  });
+</script>
+
+<input type="text" id="inputBox" placeholder="Type something...">
+
+<script>
+  document.getElementById("inputBox").addEventListener("keydown", (event) => {
+    console.log("Key pressed:", event.key);
+  });
+</script>
+
+<form id="myForm">
+    <input type="text" placeholder="Name" required>
+    <button type="submit">Submit</button>
+  </form>
+  
+  <script>
+    document.getElementById("myForm").addEventListener("submit", function (e) {
+      e.preventDefault(); // prevent the page from reloading
+      alert("Form submitted!");
+    });
+  </script>
+  
+
+  <script>
+    // getElementById
+    const heading = document.getElementById("main-heading");
+    heading.style.color = "blue";
+
+    // getElementsByClassName
+    const paragraphs = document.getElementsByClassName("demo");
+    paragraphs[0].innerText = "Modified Paragraph 1";
+
+    // querySelector
+    const firstParagraph = document.querySelector(".demo");
+    firstParagraph.style.fontSize = "18px";
+
+    // querySelectorAll
+    const allParagraphs = document.querySelectorAll(".demo");
+    allParagraphs.forEach(p => p.style.marginBottom = "10px");
+
+    // createElement
+    const newElement = document.createElement("p");
+    newElement.innerText = "I am a new paragraph.";
+    newElement.id = "new-para";
+
+    // appendChild
+    const container = document.getElementById("container");
+    document.getElementById("add").addEventListener("click", () => {
+      container.appendChild(newElement);
+    });
+
+    // removeChild
+    document.getElementById("remove").addEventListener("click", () => {
+      const child = document.getElementById("new-para");
+      if (child) {
+        container.removeChild(child);
+      }
+    });
+
+    // classList.toggle
+    document.getElementById("change-style").addEventListener("click", () => {
+      heading.classList.toggle("highlight");
+    });
+
+    // querySelector with query button
+    document.getElementById("query").addEventListener("click", () => {
+      const secondPara = document.querySelectorAll(".demo")[1];
+      secondPara.innerText = "Selected with querySelectorAll!";
+    });
+  </script>
+
+</body>
+</html>

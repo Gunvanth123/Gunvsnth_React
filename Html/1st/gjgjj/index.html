@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .highlight{
+    background-color: yellow;
+    color: #000000;
+    transform: scale(.8);
+    transition: ease-in 1s transform ;
+}
+
+.removehighlight{
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    transform: scale(1.5);
+    transition: ease-out 1s transform ;
+}
+    </style>
+    <script>
+        document.getElementById("button1").addEventListener("click", function () {
+  let h1 = document.getElementById("Para");
+  h1.textContent = "Hello i am para";
+  console.log(h1.textContent);
+  // h1.innerText="Hi Bro!"
+});
+
+var i = 0;
+document.getElementById("Butt").addEventListener("click", function () {
+  let l1 = document.getElementById("list").firstElementChild;
+  //   l1.style.backgroundColor = "green";
+  //   l1.style.color = "white";
+
+
+  if (i < 1) {
+    let newitem = document.createElement("li");
+    newitem.textContent = "boooooo";
+    document.getElementById("list").appendChild(newitem);
+    document.getElementById("list").firstElementChild.remove()
+    i++;
+  }
+
+  if (l1.classList.contains("highlight")) {
+    l1.classList.remove("highlight");
+    l1.classList.add("removehighlight");
+    this.innerText = "Add Highlight";
+  } else {
+    l1.classList.remove("removehighlight");
+    l1.classList.add("highlight");
+    this.innerText = "Remove Highlight";
+  }
+});
+
+    </script>
+  </head>
+  <body>
+    <section>
+      <h1 class="title">Hello World!</h1>
+      <p id="Para">Hi jjdhbhabhbckhab</p>
+      <button id="button1">Click here</button>
+      <p id="currentTime"></p>
+    </section>
+    <section>
+      <ul id="list">
+        <li id="list1">Guna</li>
+        <li class="list2">Dee</li>
+        <li class="list3">Tarun</li>
+        <li class="list4">Abhi</li>
+      </ul>
+      <button id="Butt">Highlight the first li</button>
+    </section>
+    <section>
+
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>

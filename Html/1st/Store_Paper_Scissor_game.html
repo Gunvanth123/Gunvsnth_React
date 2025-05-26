@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stone Paper Scissors</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .choices {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .choice {
+      padding: 15px 25px;
+      font-size: 18px;
+      cursor: pointer;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .choice:hover {
+      background: #0056b3;
+    }
+
+    .result, .score {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #222;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Stone Paper Scissors</h1>
+
+  <div class="choices">
+    <button class="choice" data-choice="stone">🪨 Stone</button>
+    <button class="choice" data-choice="paper">📄 Paper</button>
+    <button class="choice" data-choice="scissors">✂️ Scissors</button>
+  </div>
+
+  <div class="result" id="result">Make your move!</div>
+  <div class="score" id="score">You: 0 | Computer: 0</div>
+
+  <script>
+    const choices = document.querySelectorAll('.choice');
+    const resultDiv = document.getElementById('result');
+    const scoreDiv = document.getElementById('score');
+
+    let userScore = 0;
+    let computerScore = 0;
+
+    const getComputerChoice = () => {
+      const options = ['stone', 'paper', 'scissors'];
+      return options[Math.floor(Math.random() * 3)];
+    };
+
+    const getResult = (user, comp) => {
+      if (user === comp) return "It's a draw!";
+      if (
+        (user === 'stone' && comp === 'scissors') ||
+        (user === 'paper' && comp === 'stone') ||
+        (user === 'scissors' && comp === 'paper')
+      ) {
+        userScore++;
+        return "You win! 🎉";
+      } else {
+        computerScore++;
+        return "You lose! 😢";
+      }
+    };
+
+    choices.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const userChoice = btn.dataset.choice;
+        const computerChoice = getComputerChoice();
+        const result = getResult(userChoice, computerChoice);
+
+        resultDiv.innerHTML = `
+          You chose <span class="highlight">${userChoice}</span>, 
+          Computer chose <span class="highlight">${computerChoice}</span>.<br>
+          <strong>${result}</strong>
+        `;
+
+        scoreDiv.textContent = `You: ${userScore} | Computer: ${computerScore}`;
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    scroll-behavior: smooth;
+    background-color: beige;
+}
+
+main{
+    padding-top: 70px; /* adjust based on navbar height */
+    background-color: white;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: beige;
+    position: fixed;              /* 🔥 Make it fixed */
+    top: 0;                       /* 🔥 Stick it to the top */
+    width: 100%; 
+    z-index: 1000;                /* 🔥 Stay above other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.432); /* Optional: adds shadow */
+}
+
+
+.heading {
+    width: 30%;
+    padding-left: 20px;
+}
+
+.navbuttons {
+    width: 70%;
+    display: flex;
+    justify-content: end;
+    gap: 30px;
+    padding-right: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#product-container {
+    display: flex;
+    flex-wrap: wrap;            /* 🔥 allows wrapping to the next row */
+    justify-content: center;    /* 🔥 centers the items */
+    gap: 20px;                  /* 🔥 adds spacing between cards */
+    padding: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.product {
+    width: 200px;
+    height: 350px; /* slightly increased to make space for layout */
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* pushes button to bottom */
+}
+
+.product-details {
+    margin-top: 10px;
+    flex-grow: 1; /* allows the details section to grow */
+}
+
+.cart_div{
+justify-self: center;
+align-items: center;
+}
+
+.cart{
+    align-items: center;
+    margin-top: 20px;
+}
+
+footer {
+    background-color: beige;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    padding-top: 40px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}

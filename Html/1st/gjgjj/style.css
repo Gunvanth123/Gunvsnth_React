@@ -1,0 +1,13 @@
+.highlight{
+    background-color: yellow;
+    color: #000000;
+    transform: scale(.8);
+    transition: ease-in 1s transform ;
+}
+
+.removehighlight{
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    transform: scale(1.5);
+    transition: ease-out 1s transform ;
+}
